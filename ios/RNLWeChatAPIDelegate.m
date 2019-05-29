@@ -74,29 +74,6 @@
         }
     }
 
-    // pay
-    else if ([resp isKindOfClass:[PayResp class]]) {
-        aReqName = NSStringFromClass([PayReq class]);
-        PayResp *aResp = (PayResp *)resp;
-        if (isSuccess) {
-            aPayload[@"returnKey"] = NSStringNonNull(aResp.returnKey);
-        }
-    } else if ([resp isKindOfClass:[WXOfflinePayResp class]]) {
-        aReqName = NSStringFromClass([WXOfflinePayReq class]);
-    } else if ([resp isKindOfClass:[WXNontaxPayResp class]]) {
-        aReqName = NSStringFromClass([WXNontaxPayReq class]);
-        WXNontaxPayResp *aResp = (WXNontaxPayResp *)resp;
-        if (isSuccess) {
-            aPayload[@"orderID"] = NSStringNonNull(aResp.wxOrderId);
-        }
-    } else if ([resp isKindOfClass:[WXPayInsuranceResp class]]) {
-        aReqName = NSStringFromClass([WXPayInsuranceReq class]);
-        WXPayInsuranceResp *aResp = (WXPayInsuranceResp *)resp;
-        if (isSuccess) {
-            aPayload[@"orderID"] = NSStringNonNull(aResp.wxOrderId);
-        }
-    }
-
     // open ...
     else if ([resp isKindOfClass:[OpenTempSessionResp class]]) {
         aReqName = NSStringFromClass([OpenTempSessionReq class]);
