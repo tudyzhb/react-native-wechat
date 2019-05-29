@@ -163,45 +163,6 @@ RCT_REMAP_METHOD(auth,
     });
 }
 
-#pragma mark - pay
-RCT_REMAP_METHOD(pay,
-                 payWithOption:(NSDictionary *)option
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject)
-{
-    PayReq *req = [RNLWeChatReq getPayReqWithOption:option];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if ([WXApi sendReq:req]) {
-            [self addResponseHandleWithName:NSStringFromClass([PayReq class])
-                                     andResolver:resolve
-                                     andRejecter:reject];
-        } else {
-            reject(RNLWeChatGetErrorCode(RNLWeChatInvokeFailedError),
-                   @"Send pay request failed.", nil);
-        }
-    });
-}
-
-#pragma mark - offlinePay
-RCT_REMAP_METHOD(offlinePay,
-                 offlinePayWithResolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject)
-{
-    WXOfflinePayReq *req = [RNLWeChatReq getWXOfflinePayReqWithOption:nil];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if ([WXApi sendReq:req]) {
-            [self addResponseHandleWithName:NSStringFromClass([WXOfflinePayReq class])
-                                     andResolver:resolve
-                                     andRejecter:reject];
-        } else {
-            reject(RNLWeChatGetErrorCode(RNLWeChatInvokeFailedError),
-                   @"Send offline pay request failed.", nil);
-        }
-    });
-}
-
 #pragma mark - nontaxPay
 RCT_REMAP_METHOD(nontaxPay,
                  nontaxPayWithOption:(NSDictionary *)option
