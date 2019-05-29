@@ -7,10 +7,6 @@
 
 + (SendAuthReq *)getSendAuthReqWithOption:(NSDictionary *)option;
 
-+ (PayReq *)getPayReqWithOption:(NSDictionary *)option;
-
-+ (WXOfflinePayReq *)getWXOfflinePayReqWithOption:(NSDictionary *)option;
-
 + (WXNontaxPayReq *)getWXNontaxPayReqWithOption:(NSDictionary *)option;
 
 + (WXPayInsuranceReq *)getWXPayInsuranceReqWithOption:(NSDictionary *)option;

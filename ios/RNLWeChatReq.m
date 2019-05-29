@@ -13,24 +13,6 @@
     return req;
 }
 
-+ (PayReq *)getPayReqWithOption:(NSDictionary *)option
-{
-    PayReq *req = [PayReq new];
-    req.partnerId = [RCTConvert NSString:option[@"partnerId"]];
-    req.prepayId = [RCTConvert NSString:option[@"prepayId"]];
-    req.nonceStr = [RCTConvert NSString:option[@"nonce"]];
-    req.timeStamp = (UInt32)[RCTConvert NSUInteger:option[@"timestamp"]];
-    req.package = [RCTConvert NSString:option[@"package"]];
-    req.sign = [RCTConvert NSString:option[@"sign"]];
-    return req;
-}
-
-+ (WXOfflinePayReq *)getWXOfflinePayReqWithOption:(NSDictionary *)option;
-{
-    WXOfflinePayReq *req = [WXOfflinePayReq new];
-    return req;
-}
-
 + (WXNontaxPayReq *)getWXNontaxPayReqWithOption:(NSDictionary *)option;
 {
     WXNontaxPayReq *req = [WXNontaxPayReq new];
